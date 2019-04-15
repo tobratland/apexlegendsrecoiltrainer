@@ -3,11 +3,12 @@
  * @author Mugen87 / https://github.com/Mugen87
  * Modified by CaptainTheInternet
  */
+let yawObject;
+let pitchObject;
 
 THREE.PointerLockControls = function ( camera, domElement ) {
 
 	var scope = this;
-
 	this.domElement = domElement || document.body;
 	this.isLocked = false;
 
@@ -38,16 +39,7 @@ THREE.PointerLockControls = function ( camera, domElement ) {
 
 	}
 
-	let onMouseClick = function (event) {
-		if(scope.isLocked) {
-			
-				console.log(event)
-			
-		}else{
-			console.log("player cant shoot")
-		}
-	}
-	document.addEventListener("click", onMouseClick, false)
+
 
 	function onPointerlockChange() {
 
@@ -96,7 +88,9 @@ THREE.PointerLockControls = function ( camera, domElement ) {
 		this.disconnect();
 
 	};
-
+	this.getPitch = function() {
+		return pitchObject;
+	}
 	this.getObject = function () {
 
 		return yawObject;
@@ -140,3 +134,4 @@ THREE.PointerLockControls = function ( camera, domElement ) {
 
 THREE.PointerLockControls.prototype = Object.create( THREE.EventDispatcher.prototype );
 THREE.PointerLockControls.prototype.constructor = THREE.PointerLockControls;
+
