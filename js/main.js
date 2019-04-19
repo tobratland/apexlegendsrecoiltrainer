@@ -22,12 +22,10 @@ let selectedWeapon = "spitfire"
 let bulletsLeft = weapons.apexLegends[selectedWeapon].magazineSize.noExtension
 //for collision
 var collidableMeshList = [];
-var arrowList = [];
-var directionList = [];
 let gunPosition = new THREE.Vector3();
 let bullets = []
 let bulletNumber = 0;
-
+let countdownToShot = 0;
 
 
 
@@ -135,7 +133,13 @@ let bulletNumber = 0;
         floor.receiveShadow = true; //allows the floor to receive shadows
         scene.add(floor); //adds the floor to the scene
         
-
+        
+        var dotGeometry = new THREE.Geometry();
+        dotGeometry.vertices.push(new THREE.Vector3( 50, 50, 0));
+        var dotMaterial = new THREE.PointsMaterial( { size: 1, sizeAttenuation: false } );
+        var dot = new THREE.Points( dotGeometry, dotMaterial );
+        scene.add( dot );
+        dot.position.set(4,4,4 )
         //walls
         const wallheight = world.MAP_HEIGHT; //sets wall atributes from world.js
         const wallwidth = world.MAP_SIZE; //sets wall atributes from world.js
@@ -230,6 +234,8 @@ let bulletNumber = 0;
         const reload = function() {
             bulletNumber = 0;
             bulletsLeft = weapons.apexLegends[selectedWeapon].magazineSize.noExtension;
+            
+            
         }
         document.addEventListener( 'keydown', onKeyDown, false );
         document.addEventListener( 'keyup', onKeyUp, false );
@@ -276,6 +282,8 @@ let bulletNumber = 0;
         bulletStartingPoint.rotation.y = -Math.PI;
         bulletStartingPoint.visible = false;
         controls.getPitch().add(bulletStartingPoint);
+    
+
 
     function animate() {
         requestAnimationFrame( animate );
@@ -286,8 +294,13 @@ let bulletNumber = 0;
                 bullets.splice(index,1);
                 continue;
             }
-            
+            //stops the bullets at collision with wall(or, really, at the coordinates of the wall)
+            if(Math.abs(bullets[index].position.x) >= world.MAP_SIZE /2 - 2 || Math.abs(bullets[index].position.y) >= world.MAP_SIZE /2 - 2 || Math.abs(bullets[index].position.z) >= world.MAP_SIZE / 2 - 2) {
+                let stopVelocity = new THREE.Vector3(0,0,0)
+                bullets[index].velocity = stopVelocity
+            }
             bullets[index].position.add(bullets[index].velocity);	
+            
         } 
 
         /* shooting, movement including jumping */
@@ -338,19 +351,18 @@ let bulletNumber = 0;
             }
 
             /* shooting */
-            if (mouseDown && player.countdownToShot <= 0 && bulletsLeft > 0) {
+            if (mouseDown && countdownToShot <= 0 && bulletsLeft > 0) {
                 let gunDirection = new THREE.Vector3();
                 
                                     // creates a bullet as a Mesh object
                     var bullet = new THREE.Mesh(
                         new THREE.SphereGeometry(0.2,0.2,0.2),
-                        new THREE.MeshBasicMaterial({color:0xB80005}),
+                        new THREE.MeshBasicMaterial({color:0xB4A365}),
 
                     );
-                    
-                    
+                
+                    //sets startingpoint
                     bulletStartingPoint.getWorldDirection(gunDirection)
-
                     bulletStartingPoint.getWorldPosition(gunPosition)
                     
                     // position the bullet to come from the player's weapon
@@ -374,31 +386,36 @@ let bulletNumber = 0;
 
 
                         //sets bulletvelocity to direction times playerspeed + 1
+                    
                     bullet.velocity = new THREE.Vector3(
-                        bulletDirection.x * (1 + (-velocity.x * delta)),
-                        bulletDirection.y * (1 + (-velocity.y * delta)),
-                        bulletDirection.z * (1 + (-velocity.z * delta)),
+                        bulletDirection.x * (2 + (-velocity.x * delta)),
+                        bulletDirection.y * (2 + (-velocity.y * delta)),
+                        bulletDirection.z * (2 + (-velocity.z * delta)),
                     );
                     
                     // after 5000ms, set alive to false and remove from scene
                     // setting alive to false flags our update code to remove
                     // the bullet from the bullets array
                     bullet.alive = true;
-                    setTimeout(() => scene.remove(bullet), 500);
+                    
+                    
+                    setTimeout(() => scene.remove(bullet), 15000);
+                    
+                    
                     
                     // add to scene, array, and set the delay(canshoot) to x frames
                     bullets.push(bullet);
                     scene.add(bullet);
-                    player.countdownToShot = 10;
-
+                    countdownToShot = weapons.apexLegends[selectedWeapon].recoilPattern[bulletNumber].t;
+                    
                     //playing with recoil
                     const recoilPattern = weapons.apexLegends[selectedWeapon].recoilPattern;
                     
                     
                     
                                                 
-                    controls.getObject().children[ 0 ].rotation.x = controls.getObject().children[ 0 ].rotation.x + (recoilPattern[bulletNumber].y * 0.0015)
-                    controls.getObject().rotation.y = controls.getObject().rotation.y + (recoilPattern[bulletNumber].x * 0.0015)
+                    controls.getObject().children[ 0 ].rotation.x = controls.getObject().children[ 0 ].rotation.x + (recoilPattern[bulletNumber].y * 0.0008)
+                    controls.getObject().rotation.y = controls.getObject().rotation.y + (recoilPattern[bulletNumber].x * 0.0008)
                     
                     bulletNumber++;
                     console.log(bulletsLeft)
@@ -407,8 +424,8 @@ let bulletNumber = 0;
                 
                 }
                 
-                if(player.countdownToShot > 0) player.countdownToShot -= 1;
-
+                if(countdownToShot > 0) countdownToShot -= 1  ;
+                console.log(delta)
             prevTime = time;
             
         } //end of movement + jumping   

@@ -19,6 +19,5 @@ export let player =  {
         },
         
         canShoot: false,
-        countdownToShot: 0,
         canJump: true,
 }
