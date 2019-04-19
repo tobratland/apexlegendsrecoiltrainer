@@ -4,62 +4,55 @@
 		<title>Apex Legends Recoil Trainer</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<style>
-			html, body {
-				width: 100%;
-				height: 100%;
-			}
-			body {
-				background-color: #ffffff;
-				margin: 0;
-				overflow: hidden;
-				font-family: arial;
-			}
-			#blocker {
-				position: absolute;
-				width: 100%;
-				height: 100%;
-				background-color: rgba(0,0,0,0.5);
-			}
-			#instructions {
-				width: 100%;
-				height: 100%;
-				display: -webkit-box;
-				display: -moz-box;
-				display: box;
-				-webkit-box-orient: horizontal;
-				-moz-box-orient: horizontal;
-				box-orient: horizontal;
-				-webkit-box-pack: center;
-				-moz-box-pack: center;
-				box-pack: center;
-				-webkit-box-align: center;
-				-moz-box-align: center;
-				box-align: center;
-				color: #ffffff;
-				text-align: center;
-				cursor: pointer;
-			}
-		</style>
+		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
 	<body>
-		<script src="./js/library/three.js"></script>
-		<script src="./js/library/PointerLockControls.js" type="module"></script>
-		<script src="./js/library/MTLLoader.js" ></script>
-		<script src="./js/library/OBJLoader.js" ></script>
-		<script src="./js/library/ReusableRay.js"></script>
+		
 		<div id="blocker">
 
-			<div id="instructions">
-				<span style="font-size:40px">Click to play</span>
-				<br />
-				(W, A, S, D = Move, SPACE = Jump, MOUSE = Look around)
+			<div id="settingsPage">
+				
 				<br />
 				<br />
-				Models curtosy of www.kenney.nl, give him a visit!
+				<div class="slidecontainer">
+					<p>FOV</p>
+					<input type="range" id="myRange" min="1" max="180" value="75" class="slider" oninput="fovValue.value=myRange.value">
+					<br>
+					<input type="number" id="fovValue" min="1" max="180" value="75" oninput="myRange.value=fovValue.value"> 
+
+				</div>
+				<br />
+				<p id="Instructions">(W, A, S, D = Move, SPACE = Jump, MOUSE = Look around)</p>
+				<br />
+				<br />
+				<button id="playButton">Play game</button>
+				<p id="shoutoutToModelmaker">Models curtosy of www.kenney.nl, give him a visit!</p>
+				<div>
+					<select id="weaponSelector" >
+							<option value="spitfire">Spitfire</option>
+							<option value="totalyNotSpitfire">TotalyNotSpitfire</option>
+						</select>
+				</div>
 			</div>
 
+		<!-- <div id="Options">
+			<span style="font-size:40px">Click to play</span>
+			<br />
+			(W, A, S, D = Move, SPACE = Jump, MOUSE = Look around)
+			<br />
+			<br />
+			Models curtosy of www.kenney.nl, give him a visit!
 		</div>
+ -->
+		</div>
+		<script src="./js/library/three.js" type="module"></script>
+		<script src="./js/world.js" type="module"></script>
+		<script src="./js/player.js" type="module"></script>
+		<script src="./js/library/PointerLockControls.js" type="module"></script>
+		<script src="./js/library/MTLLoader.js" type="module" ></script>
+		<script src="./js/library/OBJLoader.js" type="module" ></script>
+		<script src="./js/settings.js" type="module" ></script>
+		<script src="./js/weapons.js" type="module" ></script>
 		<script src="./js/main.js" type="module" ></script>
 	</body>
 </html>	
