@@ -98,6 +98,8 @@ let startGunRotationY;
             blocker.style.display = 'none';
             selectWeapon(); //selects weapon
             changeFov(); //updates the fov
+            changeMouseSensitivity() // updates mouse sens
+            
             player.canShoot = true;
             bulletsLeft = weapons.apexLegends[selectedWeapon].magazineSize.noExtension
             
@@ -276,6 +278,10 @@ let startGunRotationY;
         camera.fov = document.getElementById("fovValue").value;
         camera.updateProjectionMatrix();
     }
+    function changeMouseSensitivity() {
+        settings.sens = document.getElementById("MouseSensNumber").value;
+        camera.updateProjectionMatrix();
+    }
 
     function onWindowResize() {
         camera.aspect = window.innerWidth / window.innerHeight;
@@ -412,7 +418,7 @@ let startGunRotationY;
                 }
                 timeToAnimate = time - timeToAnimate
                 if(countdownToShot > 0) countdownToShot -= (delta + timeToAnimate); ; //gives the most accurate countdown to shot. Takes into account time between frames and time during frames.
-                console.log(countdownToShot)
+                
                 
             prevTime = time;
             

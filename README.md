@@ -8,6 +8,7 @@ Allowing players to practise recoil and timing of weapons directly in browser, a
 ## Production History
 ### 0.2.1 - 22.04.2019
 Changed the way bullets work completely from beeing meshes fired to obstacles
+Added mouse sensitivity slider and the code for controlling it.
 ### 0.2.0 - 19.04.2019
 refactored code, added basic menu, added playercollision
 ### 0.1.0
@@ -32,7 +33,7 @@ Create a new Pull Request
 Not a complete list, just updated as i remember the things i want to add.
 
 ### Menu Screen
-- [ ] Add picker for mouse sensitivity
+- [x] Add picker for mouse sensitivity
 - [ ] Add styling to make it look better
 
 ### Physics
