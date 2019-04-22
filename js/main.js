@@ -22,13 +22,36 @@ let selectedWeapon = "spitfire"
 let bulletsLeft = weapons.apexLegends[selectedWeapon].magazineSize.noExtension
 //for collision
 var collidableMeshList = [];
-let gunPosition = new THREE.Vector3();
-let bullets = []
+const recoilPattern = weapons.apexLegends[selectedWeapon].recoilPattern;
 let bulletNumber = 0;
-let countdownToShot = 0;
+let countdownToShot = weapons.apexLegends[selectedWeapon].timeToFirstShot
+let startGunRotationX;
+let startGunRotationY;
 
 
 
+
+
+      //calculate objects intersecting the picking ray
+      
+      
+
+//overlay canvas for reticle
+    const crosshairCanvas = document.getElementById("xhair")
+    const crosshairCtx = crosshairCanvas.getContext('2d');
+    crosshairCtx.strokeStyle = '#39ff14';
+    crosshairCtx.fillStyle = '#39ff14';
+    crosshairCtx.lineWidth = 2;
+
+    crosshairCtx.clearRect(0, 0, 30, 30);
+    crosshairCtx.fillRect(13, 13, 4, 4);
+    
+
+    var raycaster = new THREE.Raycaster();
+    var rayDirection = new THREE.Vector3( 0, 0, -1 );
+    var rayRotation = new THREE.Euler( 0, 0, 0, "YXZ" );
+
+    
     init();
     animate();
     
@@ -36,6 +59,8 @@ let countdownToShot = 0;
         camera = new THREE.PerspectiveCamera( document.getElementById("fovValue").value, window.innerWidth / window.innerHeight, 1, 1000 ); //sets the type of camera, size of the camera and min/max viewdistance. This is my eyes
         controls = new THREE.PointerLockControls( camera );
         
+        
+
         const blocker = document.getElementById( 'blocker' ); //defines up the blocker element from the document
         const instructions = document.getElementById( 'settingsPage' ); // defines up the instructions element from the document
         const instructionButton = document.getElementById( 'playButton' )
@@ -76,7 +101,7 @@ let countdownToShot = 0;
             player.canShoot = true;
             bulletsLeft = weapons.apexLegends[selectedWeapon].magazineSize.noExtension
             
-            console.log(selectedWeapon)
+            console.log(selectedWeapon, bulletsLeft)
         } );
         controls.addEventListener( 'unlock', function () {
             blocker.style.display = 'block';
@@ -134,12 +159,6 @@ let countdownToShot = 0;
         scene.add(floor); //adds the floor to the scene
         
         
-        var dotGeometry = new THREE.Geometry();
-        dotGeometry.vertices.push(new THREE.Vector3( 50, 50, 0));
-        var dotMaterial = new THREE.PointsMaterial( { size: 1, sizeAttenuation: false } );
-        var dot = new THREE.Points( dotGeometry, dotMaterial );
-        scene.add( dot );
-        dot.position.set(4,4,4 )
         //walls
         const wallheight = world.MAP_HEIGHT; //sets wall atributes from world.js
         const wallwidth = world.MAP_SIZE; //sets wall atributes from world.js
@@ -225,11 +244,15 @@ let countdownToShot = 0;
             }
         };
         const onMouseDown = function() {
+            /* startGunRotationX = controls.getObject().children[ 0 ].rotation.x
+            startGunRotationY =  controls.getObject().rotation.y */
             mouseDown = true;
         }
         const onMouseUp = function() {
             mouseDown = false;
             bulletNumber = 0;
+            /* controls.getObject().children[ 0 ].rotation.x = startGunRotationX
+            controls.getObject().rotation.y =  startGunRotationY */
         };
         const reload = function() {
             bulletNumber = 0;
@@ -270,43 +293,25 @@ let countdownToShot = 0;
         meshes["gun"].position.set(1, -2, -2.5);
         meshes["gun"].rotation.y = -Math.PI;
         meshes["gun"].scale.set( 70, 70, 70 )
+        
         controls.getPitch().add(meshes["gun"]);
 
     }   
-    //makes and invisible startingpoint for the bullets and positions it right in front of the player weapon
-    const bulletStartingPoint = new THREE.Mesh(
-        new THREE.SphereGeometry(1,1,1),
-        new THREE.MeshBasicMaterial({color:0xffffff})
-    )
-        bulletStartingPoint.position.set(1, -2, -7);
-        bulletStartingPoint.rotation.y = -Math.PI;
-        bulletStartingPoint.visible = false;
-        controls.getPitch().add(bulletStartingPoint);
     
-
+    
+        
 
     function animate() {
         requestAnimationFrame( animate );
-        /* removes bullets that dont exist and adds mvement to bullets shot */
-        for(var index=0; index<bullets.length; index+=1){
-            if( bullets[index] === undefined ) continue;
-            if( bullets[index].alive == false ){
-                bullets.splice(index,1);
-                continue;
-            }
-            //stops the bullets at collision with wall(or, really, at the coordinates of the wall)
-            if(Math.abs(bullets[index].position.x) >= world.MAP_SIZE /2 - 2 || Math.abs(bullets[index].position.y) >= world.MAP_SIZE /2 - 2 || Math.abs(bullets[index].position.z) >= world.MAP_SIZE / 2 - 2) {
-                let stopVelocity = new THREE.Vector3(0,0,0)
-                bullets[index].velocity = stopVelocity
-            }
-            bullets[index].position.add(bullets[index].velocity);	
-            
-        } 
+        let timeToAnimate = performance.now(); //gives metric to measure the time from start of animation, to end. 
+        let time = performance.now();
+        let delta = ( time - prevTime ) / 1000;
+        
+       
 
         /* shooting, movement including jumping */
         if ( controls.isLocked === true ) {
-            let time = performance.now();
-            let delta = ( time - prevTime ) / 1000;
+            
             velocity.x -= velocity.x * 10.0 * delta;
             velocity.z -= velocity.z * 10.0 * delta;
             velocity.y -= 9.8 * 100.0 * delta; // 100.0 = mass
@@ -352,81 +357,65 @@ let countdownToShot = 0;
 
             /* shooting */
             if (mouseDown && countdownToShot <= 0 && bulletsLeft > 0) {
-                let gunDirection = new THREE.Vector3();
+                let shotPosition = new THREE.Vector3()
+                var cameraDirection = controls.getDirection(new THREE.Vector3(0, 0, 0)).normalize().clone();
+                var rayCaster = new THREE.Raycaster();  
                 
-                                    // creates a bullet as a Mesh object
-                    var bullet = new THREE.Mesh(
-                        new THREE.SphereGeometry(0.2,0.2,0.2),
-                        new THREE.MeshBasicMaterial({color:0xB4A365}),
-
-                    );
+                //setting up for the hitpoint
+                var hitGeometry = new THREE.CircleGeometry( 0.2, 16 );
+                var hitMateral = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
+                var circle = new THREE.Mesh( hitGeometry, hitMateral );
+                circle.material.side = THREE.DoubleSide
+                rayCaster.set( controls.getObject().position, cameraDirection );
+                var intersects = rayCaster.intersectObjects( scene.children );
                 
-                    //sets startingpoint
-                    bulletStartingPoint.getWorldDirection(gunDirection)
-                    bulletStartingPoint.getWorldPosition(gunPosition)
-                    
-                    // position the bullet to come from the player's weapon
-                    bullet.position.set(
-                        gunPosition.x ,
-                        gunPosition.y ,
-                        gunPosition.z ,
-                    );
-                    bullet.rotation.set(
-                        gunDirection.x ,
-                        gunDirection.y ,
-                        gunDirection.z ,
-                    );
-                    
-                    
-                    
-                    
-                    // set the velocity of the bullet
-                    const bulletDirection = new THREE.Vector3();
-                    bulletStartingPoint.getWorldDirection(bulletDirection)
 
-
-                        //sets bulletvelocity to direction times playerspeed + 1
+                for ( var intersectIndex = 0; intersectIndex < intersects.length; intersectIndex++ ) {
+                    shotPosition = (intersects[intersectIndex].point)
                     
-                    bullet.velocity = new THREE.Vector3(
-                        bulletDirection.x * (2 + (-velocity.x * delta)),
-                        bulletDirection.y * (2 + (-velocity.y * delta)),
-                        bulletDirection.z * (2 + (-velocity.z * delta)),
-                    );
+                }
+                circle.alive = true;
+                scene.add( circle );
+                if(shotPosition.x >= world.MAP_SIZE / 2 - 1) {
+                    circle.position.set(shotPosition.x - 0.1, shotPosition.y, shotPosition.z)
+                    circle.rotation.y = -Math.PI / 2
+                } else if(shotPosition.x <= -(world.MAP_SIZE / 2 - 1) ) {
+                    circle.position.set(shotPosition.x + 0.1, shotPosition.y, shotPosition.z)
+                    circle.rotation.y = -Math.PI / 2
+                } else if(shotPosition.z >= world.MAP_SIZE / 2 - 1) {
+                    circle.position.set(shotPosition.x , shotPosition.y, shotPosition.z - 0.1)
                     
-                    // after 5000ms, set alive to false and remove from scene
-                    // setting alive to false flags our update code to remove
-                    // the bullet from the bullets array
-                    bullet.alive = true;
+                } else if(shotPosition.z <= -(world.MAP_SIZE / 2 - 1) ) {
+                    circle.position.set(shotPosition.x , shotPosition.y, shotPosition.z + 0.1)
+                   
+                } else if( (shotPosition.y <= 6 && shotPosition.x <= world.MAP_SIZE / 2 - 1) || shotPosition.y <= 6 && shotPosition.x >= -(world.MAP_SIZE / 2 - 1) || (shotPosition.y <= 6 && shotPosition.z <= world.MAP_SIZE / 2 - 1) || shotPosition.y <= 6 && shotPosition.z >= -(world.MAP_SIZE / 2 - 1) ) {
+                    circle.position.set(shotPosition.x , 0.1, shotPosition.z)
+                    circle.rotation.x = -Math.PI / 2
+                }   
+                console.log(shotPosition)
+                
+                
+                    countdownToShot = weapons.apexLegends[selectedWeapon].recoilPattern[bulletNumber].t
+                    
+                    //controlling recoil
                     
                     
-                    setTimeout(() => scene.remove(bullet), 15000);
-                    
-                    
-                    
-                    // add to scene, array, and set the delay(canshoot) to x frames
-                    bullets.push(bullet);
-                    scene.add(bullet);
-                    countdownToShot = weapons.apexLegends[selectedWeapon].recoilPattern[bulletNumber].t;
-                    
-                    //playing with recoil
-                    const recoilPattern = weapons.apexLegends[selectedWeapon].recoilPattern;
-                    
-                    
-                    
-                                                
                     controls.getObject().children[ 0 ].rotation.x = controls.getObject().children[ 0 ].rotation.x + (recoilPattern[bulletNumber].y * 0.0008)
-                    controls.getObject().rotation.y = controls.getObject().rotation.y + (recoilPattern[bulletNumber].x * 0.0008)
+                    controls.getObject().rotation.y = controls.getObject().rotation.y + (recoilPattern[bulletNumber].x * 0.0008) 
                     
-                    bulletNumber++;
-                    console.log(bulletsLeft)
+
+                    bulletNumber++; 
+                    
                     bulletsLeft --
                     
                 
                 }
+                timeToAnimate = time - timeToAnimate
+                if(countdownToShot > 0) countdownToShot -= (delta + timeToAnimate); ; //gives the most accurate countdown to shot. Takes into account time between frames and time during frames.
+                console.log(countdownToShot)
                 
-                if(countdownToShot > 0) countdownToShot -= 1  ;
-                console.log(delta)
             prevTime = time;
+            
             
         } //end of movement + jumping   
 
