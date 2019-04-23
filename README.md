@@ -21,7 +21,7 @@ Torbjørn Bratland – Tobratland@gmail.com - https://github.com/tobratland/
 
 
 ## Contributing
-Fork it (https://github.com/yourname/yourproject/fork)
+Fork it (https://github.com/tobratland/apexlegendsrecoiltrainer)
 Create your feature branch (git checkout -b feature/fooBar)
 Commit your changes (git commit -am 'Add some fooBar')
 Push to the branch (git push origin feature/fooBar)
