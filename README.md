@@ -16,7 +16,7 @@ Added simple world, weapon, bullets, bulletphysics and simple recoil
 ### 0.0.1
 Work in progress
 
-##Meta
+## Meta
 Torbjørn Bratland – Tobratland@gmail.com - https://github.com/tobratland/
 
 
