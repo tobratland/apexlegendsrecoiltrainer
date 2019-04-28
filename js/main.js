@@ -18,13 +18,15 @@ let velocity = new THREE.Vector3();
 const USE_WIREFRAME = false;
 let playerMesh;
 let meshes = {}
-let selectedWeapon = "spitfire"
+let weaponSelector = document.getElementById("weaponSelector")
+let selectedWeapon = weaponSelector.options[weaponSelector.selectedIndex].value
 let bulletsLeft = weapons.apexLegends[selectedWeapon].magazineSize.noExtension
 //for collision
 var collidableMeshList = [];
-const recoilPattern = weapons.apexLegends[selectedWeapon].recoilPattern;
+let recoilPattern = weapons.apexLegends[selectedWeapon].recoilPattern;
 let bulletNumber = 0;
 let countdownToShot = weapons.apexLegends[selectedWeapon].timeToFirstShot
+
 let startGunRotationX;
 let startGunRotationY;
 
@@ -99,7 +101,9 @@ let startGunRotationY;
             selectWeapon(); //selects weapon
             changeFov(); //updates the fov
             changeMouseSensitivity() // updates mouse sens
-            
+            recoilPattern = weapons.apexLegends[selectedWeapon].recoilPattern;
+            bulletNumber = 0;
+            countdownToShot = weapons.apexLegends[selectedWeapon].timeToFirstShot
             player.canShoot = true;
             bulletsLeft = weapons.apexLegends[selectedWeapon].magazineSize.noExtension
             
@@ -272,7 +276,7 @@ let startGunRotationY;
     } //end of init
 
     function selectWeapon() {
-        selectedWeapon = weaponSelector.options[weaponSelector.selectedIndex].value; 
+        selectedWeapon = weaponSelector.options[weaponSelector.selectedIndex].value
     }
     function changeFov() {
         camera.fov = document.getElementById("fovValue").value;
@@ -304,7 +308,9 @@ let startGunRotationY;
 
     }   
     
-    
+    function randomNumberinRange(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) ) + min; 
+    }
         
 
     function animate() {
@@ -313,13 +319,13 @@ let startGunRotationY;
         let time = performance.now();
         let delta = ( time - prevTime ) / 1000;
         
-       
+       console.log(bulletNumber)
 
         /* shooting, movement including jumping */
         if ( controls.isLocked === true ) {
             
-            velocity.x -= velocity.x * 10.0 * delta;
-            velocity.z -= velocity.z * 10.0 * delta;
+            velocity.x -= velocity.x * 8.0 * delta;
+            velocity.z -= velocity.z * 8.0 * delta;
             velocity.y -= 9.8 * 100.0 * delta; // 100.0 = mass
             direction.z = Number( moveForward ) - Number( moveBackward );
             direction.x = Number( moveLeft ) - Number( moveRight );
@@ -369,7 +375,7 @@ let startGunRotationY;
                 
                 //setting up for the hitpoint
                 var hitGeometry = new THREE.CircleGeometry( 0.2, 16 );
-                var hitMateral = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
+                var hitMateral = new THREE.MeshBasicMaterial( { color: 0x0E0909 } );
                 var circle = new THREE.Mesh( hitGeometry, hitMateral );
                 circle.material.side = THREE.DoubleSide
                 rayCaster.set( controls.getObject().position, cameraDirection );
@@ -404,13 +410,19 @@ let startGunRotationY;
                     countdownToShot = weapons.apexLegends[selectedWeapon].recoilPattern[bulletNumber].t
                     
                     //controlling recoil
+                    let recoilXMin = recoilPattern[bulletNumber].xMin
+                    let recoilXMax = recoilPattern[bulletNumber].xMax
+                    let recoilYMin = recoilPattern[bulletNumber].yMin
+                    let recoilYMax = recoilPattern[bulletNumber].yMax
                     
-                    
-                    controls.getObject().children[ 0 ].rotation.x = controls.getObject().children[ 0 ].rotation.x + (recoilPattern[bulletNumber].y * 0.0008)
-                    controls.getObject().rotation.y = controls.getObject().rotation.y + (recoilPattern[bulletNumber].x * 0.0008) 
+                    controls.getObject().children[ 0 ].rotation.x = controls.getObject().children[ 0 ].rotation.x + (randomNumberinRange(recoilYMin, recoilYMax)) * 0.00030
+                    controls.getObject().rotation.y = controls.getObject().rotation.y + (randomNumberinRange(recoilXMin, recoilXMax)) * 0.00030
+                  
+                    /* controls.getObject().children[ 0 ].rotation.x = controls.getObject().children[ 0 ].rotation.x + (recoilPattern[bulletNumber].y * 0.00030)
+                    controls.getObject().rotation.y = controls.getObject().rotation.y + (recoilPattern[bulletNumber].x * 0.00030)  */
                     
 
-                    bulletNumber++; 
+                    bulletNumber++;     
                     
                     bulletsLeft --
                     
