@@ -1,443 +1,6 @@
 export const weapons = {
     apexLegends: {
-        //LMGs
-        spitfire: {
-            name: "Spitfire",
-            audio: {
-            
-            },
-            timeToFirstShot: 0,
-            recoilPattern: [
-                {
-                    x: 4,
-                    y: 39,
-                    t: 0.111
-                },
-                {
-                    x: 4,
-                    y: 15,
-                    t: 0.111
-                },
-                {
-                    x: 21,
-                    y: 23,
-                    t: 0.111
-                },
-                {
-                    x: 11,
-                    y: 22,
-                    t: 0.111
-                },
-                {
-                    x: 8,
-                    y: 24,
-                    t: 0.111
-                },
-                {
-                    x: -5,
-                    y: 22,
-                    t: 0.111
-                },
-                {
-                    x: -8,
-                    y: 8,
-                    t: 0.111
-                },
-                {
-                    x: -20,
-                    y: -2,
-                    t: 0.111
-                },
-                
-                {//bullet 10
-                    x: -8,
-                    y: -2,
-                    t: 0.111
-                },
-                {
-                    x: -12,
-                    y: 7,
-                    t: 0.111
-                },
-                {
-                    x: -10,
-                    y: 18,
-                    t: 0.111
-                },
-                {
-                    x: 12,
-                    y: 6,
-                    t: 0.111
-                },
-                {
-                    x: 22,
-                    y: 13,
-                    t: 0.111
-                },
-                {
-                    x: 4,
-                    y: 5,
-                    t: 0.111
-                },
-                {
-                    x: 22,
-                    y: -6,
-                    t: 0.111
-                },
-                {
-                    x: 5,
-                    y: 0,
-                    t: 0.111
-                },
-                {
-                    x: 8,
-                    y: 24,
-                    t: 0.111
-                },
-                {
-                    x: 9,
-                    y: 19,
-                    t: 0.111
-                },
-                { // bullet nr 20
-                    x: 11,
-                    y: 6,
-                    t: 0.111
-                },
-                {
-                    x: 17,
-                    y: 1,
-                    t: 0.111
-                },
-                {
-                    x: 11,
-                    y: -2,
-                    t: 0.111
-                },
-                {
-                    x: -7,
-                    y: 10,
-                    t: 0.111
-                },
-                {
-                    x: -20,
-                    y: 4,
-                    t: 0.111
-                },
-                {
-                    x: -13,
-                    y: 2,
-                    t: 0.111
-                },
-                {
-                    x: -18,
-                    y: 10,
-                    t: 0.111
-                },
-                {
-                    x: -11,
-                    y: 1,
-                    t: 0.111
-                },
-                {
-                    x: -18,
-                    y: -3,
-                    t: 0.111
-                },
-                {
-                    x: -4,
-                    y: 11,
-                    t: 0.111
-                },
-                { //bullet 30
-                    x: -8,
-                    y: 8,
-                    t: 0.111
-                },
-                {
-                    x: 7,
-                    y: 7,
-                    t: 0.111
-                },
-                {
-                    x: -18,
-                    y: -6,
-                    t: 0.111
-                },
-                {
-                    x: -7,
-                    y: -4,
-                    t: 0.111
-                },
-                {
-                    x: -9,
-                    y: 8,
-                    t: 0.111
-                },
-                {
-                    x: -4,
-                    y: 14,
-                    t: 0.111
-                },
-                {
-                    x: -4,
-                    y: 14,
-                    t: 0.111
-                },
-                {
-                    x: -4,
-                    y: 14,
-                    t: 0.111
-                },
-
-                
-                
-                
-
-            ],
-            inaccuracy: {
-                standing: 0,
-                crouching: 0,
-                running: 0
-            },
-            magazineSize: {
-                noExtension: 35,
-                extensionLevelOne: 35,
-                extensionLevelTwo: 35,
-                extensionLevelThree: 35
-            },
-            roundsPerMinute: 512,
-            projectileSpeed: 27500,
-            reloadTime: {
-                LoadedNoExtension: 2.8,
-                EmptyNoExtension: 3.33,
-                LoadedExtensionLevelOne: 2.8,
-                EmptyExtensionLevelOne: 3.33,
-                LoadedExtensionLevelTwo: 2.8,
-                EmptyExtensionLevelTwo: 3.33,
-                LoadedExtensionLevelThree: 2.8,
-                EmptyExtensionLevelThree: 3.33,
-            }
-        },
-        totalyNotSpitfire: {
-            name: "totalyNotSpitfire",
-            audio: {
-
-            },
-            recoilPattern: [
-                {
-                    x: 1,
-                    y: 34,
-                    t: 0.111
-                },
-                {
-                    x: -9,
-                    y: 27,
-                    t: 0.111
-                },
-                {
-                    x: -21,
-                    y: 27,
-                    t: 0.111
-                },
-                {
-                    x: -15,
-                    y: 31,
-                    t: 0.111
-                },
-                {
-                    x: -3,
-                    y: 12,
-                    t: 0.111
-                },
-                {
-                    x: -17,
-                    y: 13,
-                    t: 0.111
-                },
-                {
-                    x: -19,
-                    y: 12,
-                    t: 0.111
-                },
-                {
-                    x: -24,
-                    y: 9,
-                    t: 0.111
-                },
-                
-                {
-                    x: -7,
-                    y: 21,
-                    t: 0.111
-                },
-                {//bullet 10
-                    x: -6,
-                    y: 11,
-                    t: 0.111
-                },
-                {
-                    x: -13,
-                    y: 18,
-                    t: 0.111
-                },
-                {
-                    x: -2,
-                    y: 11,
-                    t: 0.111
-                },
-                {
-                    x: -11,
-                    y: 7,
-                    t: 0.111
-                },
-                {
-                    x: -4,
-                    y: 2,
-                    t: 0.111
-                },
-                {
-                    x: -7,
-                    y: -4,
-                    t: 0.111
-                },
-                {
-                    x: -13,
-                    y: 12,
-                    t: 0.111
-                },
-                {
-                    x: 0,
-                    y: 24,
-                    t: 0.111
-                },
-                {
-                    x: -15,
-                    y: 12,
-                    t: 0.0046666667
-                },
-                { // bullet nr 20
-                    x: 12,
-                    y: 3,
-                    t: 0.0046666667
-                },
-                {
-                    x: 17,
-                    y: 1,
-                    t: 0.0046666667
-                },
-                {
-                    x: 11,
-                    y: -2,
-                    t: 0.0046666667
-                },
-                {
-                    x: -7,
-                    y: 10,
-                    t: 0.0046666667
-                },
-                {
-                    x: -20,
-                    y: 4,
-                    t: 0.0046666667
-                },
-                {
-                    x: -13,
-                    y: 2,
-                    t: 0.0046666667
-                },
-                {
-                    x: -18,
-                    y: 10,
-                    t: 0.0046666667
-                },
-                {
-                    x: -11,
-                    y: 1,
-                    t: 0.0046666667
-                },
-                {
-                    x: -18,
-                    y: -3,
-                    t: 0.0046666667
-                },
-                {
-                    x: -4,
-                    y: 11,
-                    t: 0.0046666667
-                },
-                { //bullet 30
-                    x: -8,
-                    y: 8,
-                    t: 0.0046666667
-                },
-                {
-                    x: 7,
-                    y: 7,
-                    t: 0.0046666667
-                },
-                {
-                    x: -18,
-                    y: -6,
-                    t: 0.0046666667
-                },
-                {
-                    x: -7,
-                    y: -4,
-                    t: 0.0046666667
-                },
-                {
-                    x: -9,
-                    y: 8,
-                    t: 0.0046666667
-                },
-                {
-                    x: -4,
-                    y: 14,
-                    t: 0.0046666667
-                },
-                {
-                    x: -4,
-                    y: 14,
-                    t: 0.0046666667
-                },
-                {
-                    x: -4,
-                    y: 14,
-                    t: 0.0046666667
-                },
-
-                
-                
-                
-
-            ],
-            inaccuracy: {
-                standing: 0,
-                crouching: 0,
-                running: 0
-            },
-            magazineSize: {
-                noExtension: 15,
-                extensionLevelOne: 35,
-                extensionLevelTwo: 35,
-                extensionLevelThree: 35
-            },
-            roundsPerMinute: 512,
-            projectileSpeed: 27500,
-            reloadTime: {
-                LoadedNoExtension: 2.8,
-                EmptyNoExtension: 3.33,
-                LoadedExtensionLevelOne: 2.8,
-                EmptyExtensionLevelOne: 3.33,
-                LoadedExtensionLevelTwo: 2.8,
-                EmptyExtensionLevelTwo: 3.33,
-                LoadedExtensionLevelThree: 2.8,
-                EmptyExtensionLevelThree: 3.33,
-            }
-        },
-         //SMG
-         r99: {
+        r99: {
             name: "r99",
             audio: {
             },
@@ -574,10 +137,10 @@ export const weapons = {
                 
             ],
             magazineSize: {
-                noExtension: 18,
-                extensionLevelOne: 22,
-                extensionLevelTwo: 26,
-                extensionLevelThree: 30
+                noExtension: 18, 
+                extensionLevelOne: 18, //22
+                extensionLevelTwo: 18, //26
+                extensionLevelThree: 18 // 30
             },
             roundsPerMinute: 1080,
             reloadTime: {
@@ -590,6 +153,1082 @@ export const weapons = {
                 emptyExtensionLevelTwo: 2.33,
                 emptyExtensionLevelThree: 2.21,     
             }
-        },
-    }
-}
+        }, //end of R99
+        r301: {
+            name: "r301",
+            audio: {
+            },
+            timeToFirstShot: 0,
+            recoilPattern: [
+                {
+                    xMax: -1,
+                    yMax: 43,
+                    xMin: -19,
+                    yMin: 22,
+                    t: 0.074074074,
+                },
+                {
+                    xMax: 16,
+                    yMax: 48,
+                    xMin: 5,
+                    yMin: 29,
+                    t: 0.074074074,
+                },
+                {
+                    xMax: -8,
+                    yMax: 46,
+                    xMin: -18,
+                    yMin: 28,
+                    t: 0.074074074,
+                },
+                {
+                    xMax: 0,
+                    yMax: 52,
+                    xMin: -11,
+                    yMin: -1,
+                    t: 0.074074074,
+                },
+                {
+                    xMax: -4,
+                    yMax: 33,
+                    xMin: -22,
+                    yMin: 6,
+                    t: 0.074074074,
+                },
+                {
+                    xMax: 2,
+                    yMax: 24,
+                    xMin: -19,
+                    yMin: 4,
+                    t: 0.074074074,
+                },
+                {
+                    xMax: 11,
+                    yMax: 22,
+                    xMin: -13,
+                    yMin: 3,
+                    t: 0.074074074,
+                },
+                {
+                    xMax: 11,
+                    yMax: 31,
+                    xMin: -19,
+                    yMin: -2,
+                    t: 0.074074074,
+                },
+                {
+                    xMax: -3,
+                    yMax: 21,
+                    xMin: -13,
+                    yMin: 1,
+                    t: 0.074074074,
+                },
+                {
+                    xMax: 10,
+                    yMax: 9,
+                    xMin: -23,
+                    yMin: -29,
+                    t: 0.074074074,
+                },
+                {
+                    xMax: 6,
+                    yMax: 14,
+                    xMin: -17,
+                    yMin: -6,
+                    t: 0.074074074,
+                },
+                {
+                    xMax: 16,
+                    yMax: 23,
+                    xMin: -5,
+                    yMin: 5,
+                    t: 0.074074074,
+                },
+                {
+                    xMax: 18,
+                    yMax: 18,
+                    xMin: 2,
+                    yMin: 23,
+                    t: 0.074074074,
+                },
+                {
+                    xMax: 34,
+                    yMax: 18,
+                    xMin: 2,
+                    yMin: -6,
+                    t: 0.074074074,
+                },
+                {
+                    xMax: 24,
+                    yMax: 25,
+                    xMin: 5,
+                    yMin: -4,
+                    t: 0.074074074,
+                },
+                {
+                    xMax: 26,
+                    yMax: 11,
+                    xMin: 4,
+                    yMin: -16,
+                    t: 0.074074074,
+                },
+                {
+                    xMax: 19,
+                    yMax: 13,
+                    xMin: -3,
+                    yMin: -19,
+                    t: 0.074074074,
+                },
+                {
+                    xMax: 0,
+                    yMax: 0,
+                    xMin: 0,
+                    yMin: 0,
+                    t: 0.074074074,
+                },
+
+                
+                
+            ],
+            magazineSize: {
+                noExtension: 18,
+                extensionLevelOne: 18, // 20
+                extensionLevelTwo: 18, // 25
+                extensionLevelThree: 18 //28
+            },
+            roundsPerMinute: 810,
+            reloadTime: {
+                loadedNoExtension: 2.40,
+                loadedExtensionLevelOne:2.40,
+                loadedExtensionLevelTwo: 2.28,
+                loadedExtensionLevelThree: 2.16,
+                EmptyNoExtension: 3.20,
+                emptyExtensionLevelOne:3.20,
+                emptyExtensionLevelTwo: 3.04,
+                emptyExtensionLevelThree: 2.88,     
+            }
+        }, // end of R301
+        re45: {
+            name: "re-45",
+            audio: {
+            },
+            timeToFirstShot: 0,
+            recoilPattern: [
+                {
+                    xMax: 6,
+                    yMax: 52,
+                    xMin: -13,
+                    yMin: 32,
+                    t: 0.076923077,
+                },
+                {
+                    xMax: 6,
+                    yMax: 49,
+                    xMin: 12,
+                    yMin: 27,
+                    t: 0.076923077,
+                },
+                {
+                    xMax: -11,
+                    yMax: 52,
+                    xMin: -35,
+                    yMin: 27,
+                    t: 0.076923077,
+                },
+                {
+                    xMax: -2,
+                    yMax: 54,
+                    xMin: -16,
+                    yMin: 31,
+                    t: 0.076923077,
+                },
+                {
+                    xMax: -6,
+                    yMax: 45,
+                    xMin: -21,
+                    yMin: 30,
+                    t: 0.076923077,
+                },
+                {
+                    xMax: -11,
+                    yMax: 37,
+                    xMin: -30,
+                    yMin: 13,
+                    t: 0.076923077,
+                },
+                {
+                    xMax: -11,
+                    yMax: 37,
+                    xMin: -30,
+                    yMin: 13,
+                    t: 0.076923077,
+                },
+                {
+                    xMax: -7,
+                    yMax: 34,
+                    xMin: -34,
+                    yMin: -13,
+                    t: 0.076923077,
+                },
+                {
+                    xMax: -18,
+                    yMax: 41,
+                    xMin: -40,
+                    yMin: -7,
+                    t: 0.076923077,
+                },
+                {
+                    xMax: -11,
+                    yMax: 41,
+                    xMin: -43,
+                    yMin: 2,
+                    t: 0.076923077,
+                },
+                {
+                    xMax: -1,
+                    yMax: 32,
+                    xMin: -30,
+                    yMin: -1,
+                    t: 0.076923077,
+                },
+                {
+                    xMax: -14,
+                    yMax: 20,
+                    xMin: -32,
+                    yMin: 4,
+                    t: 0.076923077,
+                },
+                {
+                    xMax: 20,
+                    yMax: 36,
+                    xMin: -31,
+                    yMin: 1,
+                    t: 0.076923077,
+                },
+                {
+                    xMax: -12,
+                    yMax: 33,
+                    xMin: -39,
+                    yMin: 7,
+                    t: 0.076923077,
+                },
+                {
+                    xMax: -2,
+                    yMax: 33,
+                    xMin: -28,
+                    yMin: 2,
+                    t: 0.076923077,
+                },
+                {
+                    xMax: 0,
+                    yMax: 0,
+                    xMin: 0,
+                    yMin: 0,
+                    t: 0.076923077,
+                },
+                ],
+                magazineSize: {
+                    noExtension: 15,
+                    extensionLevelOne: 15, // 18
+                    extensionLevelTwo: 15, // 21
+                    extensionLevelThree: 15 // 24
+                },
+                roundsPerMinute: 780,
+                reloadTime: {
+                    loadedNoExtension: 1.74,
+                    loadedExtensionLevelOne: 1.74,
+                    loadedExtensionLevelTwo: 1.65,
+                    loadedExtensionLevelThree: 1.57,
+                    EmptyNoExtension: 2.12,
+                    emptyExtensionLevelOne: 2.12,
+                    emptyExtensionLevelTwo: 2.01,
+                    emptyExtensionLevelThree: 1.91,     
+                }
+            }, //end of RE-45
+            alternator: {
+                name: "Alternator",
+                audio: {
+                },
+                timeToFirstShot: 0,
+                recoilPattern: [
+                    {
+                        xMax: 29,
+                        yMax: 84,
+                        xMin: -1,
+                        yMin: 41,
+                        t: 0.076923077,
+                    },
+                    {
+                        xMax: -14,
+                        yMax: 60,
+                        xMin: -31,
+                        yMin: 27,
+                        t: 0.1,
+                    },
+                    {
+                        xMax: 36,
+                        yMax: 84,
+                        xMin: 12,
+                        yMin: 45,
+                        t: 0.1,
+                    },
+                    {
+                        xMax: -14,
+                        yMax: 76,
+                        xMin: -37,
+                        yMin: 40,
+                        t: 0.1,
+                    },
+                    {
+                        xMax: 38,
+                        yMax: 74,
+                        xMin: 20,
+                        yMin: 41,
+                        t: 0.1,
+                    },
+                    {
+                        xMax: -17,
+                        yMax: 80,
+                        xMin: -32,
+                        yMin: 41,
+                        t: 0.1,
+                    },
+                    {
+                        xMax: 39,
+                        yMax: 64,
+                        xMin: 14,
+                        yMin: 31,
+                        t: 0.1,
+                    },
+                    {
+                        xMax: -24,
+                        yMax: 51,
+                        xMin: -58,
+                        yMin: 16,
+                        t: 0.1,
+                    },
+                    {
+                        xMax: 33,
+                        yMax: 72,
+                        xMin: 18,
+                        yMin: 33,
+                        t: 0.1,
+                    },
+                    {
+                        xMax: -36,
+                        yMax: 41,
+                        xMin: -66,
+                        yMin: 5,
+                        t: 0.1,
+                    },
+                    {
+                        xMax: 47,
+                        yMax: 64,
+                        xMin: 19,
+                        yMin: 29,
+                        t: 0.1,
+                    },
+                    {
+                        xMax: -43,
+                        yMax: 36,
+                        xMin: -62,
+                        yMin: -2,
+                        t: 0.1,
+                    },
+                    {
+                        xMax: 30,
+                        yMax: 47,
+                        xMin: 3,
+                        yMin: 4,
+                        t: 0.1,
+                    },
+                    {
+                        xMax: -14,
+                        yMax: 32,
+                        xMin: -39,
+                        yMin: 1,
+                        t: 0.1,
+                    },
+                    {
+                        xMax: 42,
+                        yMax: 54,
+                        xMin: 20,
+                        yMin: 24,
+                        t: 0.1,
+                    },
+                    {
+                        xMax: 0,
+                        yMax: 0,
+                        xMin: 0,
+                        yMin: 0,
+                        t: 0.1,
+                    },
+                    ],
+                    magazineSize: {
+                        noExtension: 15,
+                        extensionLevelOne: 15, //18 when i get the data
+                        extensionLevelTwo: 15, // 21 when i get the data
+                        extensionLevelThree: 15 // 24 when i get the data
+                    },
+                    roundsPerMinute: 600,
+                    reloadTime: {
+                        loadedNoExtension: 1.90,
+                        loadedExtensionLevelOne: 1.90,
+                        loadedExtensionLevelTwo: 1.81,
+                        loadedExtensionLevelThree: 1.71,
+                        EmptyNoExtension: 2.23,
+                        emptyExtensionLevelOne: 2.23,
+                        emptyExtensionLevelTwo: 2.12,
+                        emptyExtensionLevelThree: 2.01,     
+                    }
+                }, //end of alternator
+                flatline: {
+                    name: "Flatline",
+                    audio: {
+                    },
+                    timeToFirstShot: 0,
+                    recoilPattern: [
+                        {
+                            xMax: 33,
+                            yMax: 88,
+                            xMin: -14,
+                            yMin: 45,
+                            t: 0.1,
+                        },
+                        {
+                            xMax: 30,
+                            yMax: 39,
+                            xMin: -6,
+                            yMin: 6,
+                            t: 0.1,
+                        },
+                        {
+                            xMax: 48,
+                            yMax: 59,
+                            xMin: 16,
+                            yMin: 19,
+                            t: 0.1,
+                        },
+                        {
+                            xMax: 33,
+                            yMax: 39,
+                            xMin: 16,
+                            yMin: 19,
+                            t: 0.1,
+                        },
+                        {
+                            xMax: 21,
+                            yMax: 53,
+                            xMin: 2,
+                            yMin: 38,
+                            t: 0.1,
+                        },
+                        {
+                            xMax: 11,
+                            yMax: 48,
+                            xMin: -12,
+                            yMin: 32,
+                            t: 0.1,
+                        },
+                        {
+                            xMax: -6,
+                            yMax: 22,
+                            xMin: -24,
+                            yMin: 2,
+                            t: 0.1,
+                        },
+                        {
+                            xMax: -22,
+                            yMax: 2,
+                            xMin: -44,
+                            yMin: -16,
+                            t: 0.1,
+                        },
+                        {
+                            xMax: -5,
+                            yMax: -3,
+                            xMin: -13,
+                            yMin: -12,
+                            t: 0.1,
+                        },
+                        { //nr 10
+                            xMax: -7,
+                            yMax: 22,
+                            xMin: -19,
+                            yMin: 8,
+                            t: 0.1,
+                        },
+                        {
+                            xMax: 1,
+                            yMax: 37,
+                            xMin: -19,
+                            yMin: 8,
+                            t: 0.1,
+                        },
+                        {
+                            xMax: 25,
+                            yMax: 17,
+                            xMin: 12,
+                            yMin: 2,
+                            t: 0.1,
+                        },
+                        {
+                            xMax: 47,
+                            yMax: 33,
+                            xMin: 25,
+                            yMin: 8,
+                            t: 0.1,
+                        },
+                        {
+                            xMax: 32,
+                            yMax: 20,
+                            xMin: 4,
+                            yMin: -3,
+                            t: 0.1,
+                        },
+                        {
+                            xMax: 46,
+                            yMax: 6,
+                            xMin: 27,
+                            yMin: -20,
+                            t: 0.1,
+                        },
+                        {
+                            xMax: 27,
+                            yMax: 20,
+                            xMin: 1,
+                            yMin: -2,
+                            t: 0.1,
+                        },
+                        {
+                            xMax: 20,
+                            yMax: 41,
+                            xMin: -8,
+                            yMin: 20,
+                            t: 0.1,
+                        },
+                        {
+                            xMax: 26,
+                            yMax: 44,
+                            xMin: -4,
+                            yMin: 20,
+                            t: 0.1,
+                        },
+                        {
+                            xMax: 41,
+                            yMax: 36,
+                            xMin: 11,
+                            yMin: 6,
+                            t: 0.1,
+                        },
+                        { // nr 20
+                            xMax: 50,
+                            yMax: 16,
+                            xMin: 20,
+                            yMin: -2,
+                            t: 0.1,
+                        }, 
+                        {
+                            xMax: 24,
+                            yMax: 15,
+                            xMin: -9,
+                            yMin: -5,
+                            t: 0.1,
+                        },
+                        {
+                            xMax: 7,
+                            yMax: 34,
+                            xMin: -13,
+                            yMin: 4,
+                            t: 0.1,
+                        },
+                        {
+                            xMax: -11,
+                            yMax: 24,
+                            xMin: -34,
+                            yMin: 2,
+                            t: 0.1,
+                        },
+                        {
+                            xMax: -5,
+                            yMax: 24,
+                            xMin: -27,
+                            yMin: 3,
+                            t: 0.1,
+                        },
+                        {
+                            xMax: -14,
+                            yMax: 24,
+                            xMin: -41,
+                            yMin: 6,
+                            t: 0.1,
+                        },
+                        {
+                            xMax: -16,
+                            yMax: 15,
+                            xMin: -40,
+                            yMin: 0,
+                            t: 0.1,
+                        },
+                        {
+                            xMax: -2,
+                            yMax: -3,
+                            xMin: -32,
+                            yMin: -17,
+                            t: 0.1,
+                        },
+                        {
+                            xMax: 0,
+                            yMax: 35,
+                            xMin: -18,
+                            yMin: -6,
+                            t: 0.1,
+                        },
+                        {
+                            xMax: 0,
+                            yMax: 40,
+                            xMin: -26,
+                            yMin: 19,
+                            t: 0.1,
+                        },
+                        { //"end" shot
+                            xMax: 0,
+                            yMax: 0,
+                            xMin: 0,
+                            yMin: 0,
+                            t: 0.1,
+                        },
+
+                        
+                        ],
+                        magazineSize: {
+                            noExtension: 20,
+                            extensionLevelOne: 25,
+                            extensionLevelTwo: 28,
+                            extensionLevelThree: 30
+                        },
+                        roundsPerMinute: 600,
+                        reloadTime: {
+                            loadedNoExtension: 2.40,
+                            loadedExtensionLevelOne: 2.40,
+                            loadedExtensionLevelTwo: 2.21,
+                            loadedExtensionLevelThree: 2.09,
+                            EmptyNoExtension: 3.10,
+                            emptyExtensionLevelOne: 3.10,
+                            emptyExtensionLevelTwo: 2.85,
+                            emptyExtensionLevelThree: 2.70,     
+                        }
+                    }, // end of flatline
+                    spitfire: {
+                        name: "Spitfire",
+                        audio: {
+                        },
+                        timeToFirstShot: 0,
+                        recoilPattern: [
+                            {
+                                xMax: 13,
+                                yMax: 64,
+                                xMin: 8,
+                                yMin: 36,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: 9,
+                                yMax: 35,
+                                xMin: 2,
+                                yMin: 10,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: 36,
+                                yMax: 43,
+                                xMin: 28,
+                                yMin: 30,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: 29,
+                                yMax: 34,
+                                xMin: 12,
+                                yMin: 19,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: 16,
+                                yMax: 39,
+                                xMin: 5,
+                                yMin: 24,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: 5,
+                                yMax: 44,
+                                xMin: -6,
+                                yMin: 28,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: -7,
+                                yMax: 15,
+                                xMin: -21,
+                                yMin: 0,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: -22,
+                                yMax: -3,
+                                xMin: -36,
+                                yMin: -13,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: -3,
+                                yMax: 0,
+                                xMin: -11,
+                                yMin: -13,
+                                t: 0.111111111,
+                            },
+                            { //10
+                                xMax: -5,
+                                yMax: 16,
+                                xMin: -18,
+                                yMin: 4,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: -4,
+                                yMax: 29,
+                                xMin: -14,
+                                yMin: 17,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: 19,
+                                yMax: 10,
+                                xMin: 7,
+                                yMin: 2,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: 44,
+                                yMax: 20,
+                                xMin: 22,
+                                yMin: 9,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: 27,
+                                yMax: 11,
+                                xMin: 8,
+                                yMin: -5,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: 34,
+                                yMax: -2,
+                                xMin: 25,
+                                yMin: -14,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: 19,
+                                yMax: 11,
+                                xMin: 5,
+                                yMin: -2,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: 16,
+                                yMax: 35,
+                                xMin: -3,
+                                yMin: 25,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: 15,
+                                yMax: 37,
+                                xMin: 2,
+                                yMin: 23,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: 33,
+                                yMax: 20,
+                                xMin: 13,
+                                yMin: 10,
+                                t: 0.111111111,
+                            },
+                            { //20
+                                xMax: 39,
+                                yMax: 12,
+                                xMin: 23,
+                                yMin: 0,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: 18,
+                                yMax: 7,
+                                xMin: 4,
+                                yMin: -6,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: 2,
+                                yMax: 33,
+                                xMin: -11,
+                                yMin: 12,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: -13,
+                                yMax: 19,
+                                xMin: -31,
+                                yMin: 3,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: -6,
+                                yMax: 21,
+                                xMin: -23,
+                                yMin: 0,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: -18,
+                                yMax: 24,
+                                xMin: -36,
+                                yMin: 3,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: -20,
+                                yMax: 18,
+                                xMin: -36,
+                                yMin: 7,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: -20,
+                                yMax: 0,
+                                xMin: -35,
+                                yMin: -13,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: -7,
+                                yMax: 33,
+                                xMin: -18,
+                                yMin: 11,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: -4,
+                                yMax: 35,
+                                xMin: -28,
+                                yMin: 18,
+                                t: 0.111111111,
+                            },
+                            { //30
+                                xMax: 10,
+                                yMax: 39,
+                                xMin: -13,
+                                yMin: 14,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: -29,
+                                yMax: -2,
+                                xMin: -37,
+                                yMin: -12,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: -5,
+                                yMax: 0,
+                                xMin: -16,
+                                yMin: -11,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: -7,
+                                yMax: 20,
+                                xMin: -21,
+                                yMin: 5,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: -6,
+                                yMax: 30,
+                                xMin: -14,
+                                yMin: 22,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: 19,
+                                yMax: 15,
+                                xMin: 8,
+                                yMin: 7,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: 37,
+                                yMax: 28,
+                                xMin: 22,
+                                yMin: 17,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: 24,
+                                yMax: 15,
+                                xMin: 5,
+                                yMin: -3,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: 38,
+                                yMax: 1,
+                                xMin: 22,
+                                yMin: -10,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: 18,
+                                yMax: 12,
+                                xMin: 4,
+                                yMin: -1,
+                                t: 0.111111111,
+                            },
+                            { //40
+                                xMax: 14,
+                                yMax: 41,
+                                xMin: -4,
+                                yMin: 24,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: 16,
+                                yMax: 39,
+                                xMin: 1,
+                                yMin: 21,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: 27,
+                                yMax: 30,
+                                xMin: 13,
+                                yMin: 10,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: 38,
+                                yMax: 14,
+                                xMin: 21,
+                                yMin: 1,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: 20,
+                                yMax: 8,
+                                xMin: 6,
+                                yMin: -5,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: 2,
+                                yMax: 24,
+                                xMin: -12,
+                                yMin: 18,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: -14,
+                                yMax: 24,
+                                xMin: -30,
+                                yMin: 6,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: -9,
+                                yMax: 18,
+                                xMin: -24,
+                                yMin: 1,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: -17,
+                                yMax: 22,
+                                xMin: -31,
+                                yMin: 10,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: -17,
+                                yMax: 14,
+                                xMin: -36,
+                                yMin: -2,
+                                t: 0.111111111,
+                            },
+                            { //50
+                                xMax: -20,
+                                yMax: 2,
+                                xMin: -31,
+                                yMin: -10,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: -5,
+                                yMax: 27,
+                                xMin: -22,
+                                yMin: 6,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: 5,
+                                yMax: 36,
+                                xMin: -24,
+                                yMin: 13,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: 17,
+                                yMax: 42,
+                                xMin: -17,
+                                yMin: -9,
+                                t: 0.111111111,
+                            },
+                            {
+                                xMax: -16,
+                                yMax: 2,
+                                xMin: -34,
+                                yMin: -11,
+                                t: 0.111111111,
+                            },
+                            { //endofmag
+                                xMax: 0,
+                                yMax: 0,
+                                xMin: 0,
+                                yMin: 0,
+                                t: 0.111111111,
+                            },
+                            
+                            ],
+                            magazineSize: {
+                                noExtension: 35,
+                                extensionLevelOne: 40,
+                                extensionLevelTwo: 45,
+                                extensionLevelThree: 55
+                            },
+                            roundsPerMinute: 540,
+                            reloadTime: {
+                                loadedNoExtension: 2.80,
+                                loadedExtensionLevelOne: 2.80,
+                                loadedExtensionLevelTwo: 2.58,
+                                loadedExtensionLevelThree: 2.44,
+                                EmptyNoExtension: 3.33,
+                                emptyExtensionLevelOne: 3.33,
+                                emptyExtensionLevelTwo: 3.06,
+                                emptyExtensionLevelThree: 2.90,     
+                            }
+                        }, // end of flatline
+        }
+    }    

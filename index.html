@@ -1,17 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Apex Legends Recoil Trainer</title>
+		<title>SprayNPray - Recoil Trainer</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="newstyle.css">
 	</head>
 	<body>
+		
 		<div id="player-xhair" class="player-hud" style="width: 30px; height: 30px; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; z-index: 2; position: absolute;">
 			<canvas id="xhair" style="width: 30; height: 30; z-index: 2; border: 0px;"></canvas>
 		</div>
 		<div id="blocker">
-
+				<header>
+						<h1>Spray N Pray</h1>
+						<nav>
+							<ul>
+                                <li><a href = "mailto: cpttheinternet@gmail.com">Contact me</a></li>
+                                <li><a href="http://www.paypal.me/captaintheinternet" target="_blank">Buy me a beer</a></li>
+							</ul>
+						</nav>
+					</header>
 			<div id="settingsPage">
 				
 				<br />
@@ -31,28 +40,54 @@
 				<br />
 				<p id="Instructions">(W, A, S, D = Move, SPACE = Jump, MOUSE = Look around)</p>
 				<br />
-				<br />
-				<button id="playButton">Play game</button>
-				<p id="shoutoutToModelmaker">Models courtesy of www.kenney.nl, give him a visit!</p>
+                <br />
+                
+                <button id="playButton">Play game</button>
+                <br/>
+                <br/>
 				<div>
 					<select id="weaponSelector" >
-							<option value="r99">r99</option>
+						<optgroup label = "Light Machine Gun">
 							<option value="spitfire">Spitfire</option>
-							<option value="totalyNotSpitfire">TotalyNotSpitfire</option>
-							
-						</select>
-				</div>
+						</optgroup>
+						<optgroup label = "Submachine Gun">
+							<option value="r99">R99</option>
+							<option value="alternator">Alternator</option>
+						</optgroup>
+						<optgroup label = "Assault Rifle">
+							<option value="r301">R301</option>
+							<option value="flatline">Flatline</option>
+						</optgroup>
+						<optgroup label = "Pistols">
+							<option value="re45">RE-45</option>
+						</optgroup>
+					</select>
+					<select id="magazineSelector" >
+						<option value="noExtension">No extended magazine</option>
+						<option value="extensionLevelOne">extended magazine level 1</option>
+						<option value="extensionLevelTwo">extended magazine level 2</option>
+						<option value="extensionLevelThree">extended magazine level 3</option>
+					</select>
+					<select id="barrelAttachment" >
+						<option value="noBarrelExtension">No Barrel Extension</option>
+						<option value="barrelExtensionLevelOne">Barrel extension level 1</option>
+						<option value="barrelExtensionLevelTwo">Barrel extension level 2</option>
+						<option value="barrelExtensionLevelThree">Barrel extension level 3</option>
+					</select>
+                </div>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <p id="shoutoutToModelmaker">Made with <a href="https://threejs.org/">Three.js</a></p>
+                <p id="shoutoutToModelmaker">Got a lot of inspiration from <a href="http://spray.training/">spray.training</a></p>
+                
+                <p id="shoutoutToModelmaker">The model for the weapon is courtesy of <a href="www.kenney.nl">www.kenney.nl</a>, give him a visit!</p>
+                <p id="shoutoutToModelmaker">The <a href="https://www.reddit.com/r/apexlegends/comments/ayv40b/comprehensive_weapons_spreadsheet_including/">spreadsheet</a> Mr_Clovis made was a great help</p>
 			</div>
 			
-		<!-- <div id="Options">
-			<span style="font-size:40px">Click to play</span>
-			<br />
-			(W, A, S, D = Move, SPACE = Jump, MOUSE = Look around)
-			<br />
-			<br />
-			Models curtosy of www.kenney.nl, give him a visit!
-		</div>
- -->
 		</div>
 	
 		<script src="./js/library/three.js" type="module"></script>

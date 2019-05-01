@@ -19,8 +19,12 @@ const USE_WIREFRAME = false;
 let playerMesh;
 let meshes = {}
 let weaponSelector = document.getElementById("weaponSelector")
+let magazineSelector = document.getElementById("magazineSelector")
+let barrelAttachmentSelector = document.getElementById("barrelAttachment")
 let selectedWeapon = weaponSelector.options[weaponSelector.selectedIndex].value
-let bulletsLeft = weapons.apexLegends[selectedWeapon].magazineSize.noExtension
+let selectedMagazine = magazineSelector.options[magazineSelector.selectedIndex].value
+let selectedBarrelAttachment = barrelAttachmentSelector.options[barrelAttachmentSelector.selectedIndex].value
+let bulletsLeft = weapons.apexLegends[selectedWeapon].magazineSize[selectedMagazine]
 //for collision
 var collidableMeshList = [];
 let recoilPattern = weapons.apexLegends[selectedWeapon].recoilPattern;
@@ -99,13 +103,15 @@ let startGunRotationY;
             instructions.style.display = 'none';
             blocker.style.display = 'none';
             selectWeapon(); //selects weapon
+            selectMagazine() //selects magazinesize
+            selectBarrelMod() //selects barrelmod
             changeFov(); //updates the fov
             changeMouseSensitivity() // updates mouse sens
             recoilPattern = weapons.apexLegends[selectedWeapon].recoilPattern;
             bulletNumber = 0;
             countdownToShot = weapons.apexLegends[selectedWeapon].timeToFirstShot
             player.canShoot = true;
-            bulletsLeft = weapons.apexLegends[selectedWeapon].magazineSize.noExtension
+            bulletsLeft = weapons.apexLegends[selectedWeapon].magazineSize[selectedMagazine]
             
             console.log(selectedWeapon, bulletsLeft)
         } );
@@ -262,7 +268,7 @@ let startGunRotationY;
         };
         const reload = function() {
             bulletNumber = 0;
-            bulletsLeft = weapons.apexLegends[selectedWeapon].magazineSize.noExtension;
+            bulletsLeft = weapons.apexLegends[selectedWeapon].magazineSize[selectedMagazine]
             
             
         }
@@ -277,6 +283,12 @@ let startGunRotationY;
 
     function selectWeapon() {
         selectedWeapon = weaponSelector.options[weaponSelector.selectedIndex].value
+    }
+    function selectBarrelMod() {
+        selectedBarrelAttachment = barrelAttachmentSelector.options[barrelAttachmentSelector.selectedIndex].value
+    }
+    function selectMagazine() {
+        selectedMagazine  = magazineSelector.options[magazineSelector.selectedIndex].value
     }
     function changeFov() {
         camera.fov = document.getElementById("fovValue").value;
@@ -408,13 +420,33 @@ let startGunRotationY;
                 
                 
                     countdownToShot = weapons.apexLegends[selectedWeapon].recoilPattern[bulletNumber].t
-                    
+                    let recoilXMin
+                    let recoilXMax
+                    let recoilYMin
+                    let recoilYMax
                     //controlling recoil
-                    let recoilXMin = recoilPattern[bulletNumber].xMin
-                    let recoilXMax = recoilPattern[bulletNumber].xMax
-                    let recoilYMin = recoilPattern[bulletNumber].yMin
-                    let recoilYMax = recoilPattern[bulletNumber].yMax
-                    
+                    if(selectedBarrelAttachment === "barrelExtensionLevelOne" && selectedWeapon != "flatline") {
+                        recoilXMin = (recoilPattern[bulletNumber].xMin * 0.9)
+                        recoilXMax = (recoilPattern[bulletNumber].xMax * 0.9)
+                        recoilYMin = (recoilPattern[bulletNumber].yMin * 0.9)
+                        recoilYMax = (recoilPattern[bulletNumber].yMax * 0.9)
+                    } else if(selectedBarrelAttachment === "barrelExtensionLevelTwo" && selectedWeapon != "flatline") {
+                        recoilXMin = (recoilPattern[bulletNumber].xMin * 0.85)
+                        recoilXMax = (recoilPattern[bulletNumber].xMax * 0.85)
+                        recoilYMin = (recoilPattern[bulletNumber].yMin * 0.85)
+                        recoilYMax = (recoilPattern[bulletNumber].yMax * 0.85)
+                    } else if(selectedBarrelAttachment === "barrelExtensionLevelThree" && selectedWeapon != "flatline") {
+                        recoilXMin = (recoilPattern[bulletNumber].xMin * 0.8)
+                        recoilXMax = (recoilPattern[bulletNumber].xMax * 0.8)
+                        recoilYMin = (recoilPattern[bulletNumber].yMin * 0.8)
+                        recoilYMax = (recoilPattern[bulletNumber].yMax * 0.8)
+                    } else {
+                        recoilXMin = recoilPattern[bulletNumber].xMin
+                        recoilXMax = recoilPattern[bulletNumber].xMax
+                        recoilYMin = recoilPattern[bulletNumber].yMin
+                        recoilYMax = recoilPattern[bulletNumber].yMax
+                    }
+
                     controls.getObject().children[ 0 ].rotation.x = controls.getObject().children[ 0 ].rotation.x + (randomNumberinRange(recoilYMin, recoilYMax)) * 0.00030
                     controls.getObject().rotation.y = controls.getObject().rotation.y + (randomNumberinRange(recoilXMin, recoilXMax)) * 0.00030
                   
