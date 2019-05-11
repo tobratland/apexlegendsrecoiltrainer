@@ -2,7 +2,7 @@ import { world } from "./world.js"
 import { player } from "./player.js"
 import { models } from "./models.js"
 import { settings } from "./settings.js"
-import { weapons } from "./weapons.js"
+import weapons from "./weapons/index.js"
 
 
 let camera, scene, renderer, controls, loadingManager;
