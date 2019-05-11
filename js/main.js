@@ -25,6 +25,11 @@ let selectedWeapon = weaponSelector.options[weaponSelector.selectedIndex].value
 let selectedMagazine = magazineSelector.options[magazineSelector.selectedIndex].value
 let selectedBarrelAttachment = barrelAttachmentSelector.options[barrelAttachmentSelector.selectedIndex].value
 let bulletsLeft = weapons.apexLegends[selectedWeapon].magazineSize[selectedMagazine]
+Object.keys(localStorage)
+  .forEach(selector => {
+    console.log(selector, localStorage[selector], document.getElementById(selector));
+    document.getElementById(selector) && (document.getElementById(selector).value = localStorage[selector]);
+  });
 //for collision
 var collidableMeshList = [];
 let recoilPattern = weapons.apexLegends[selectedWeapon].recoilPattern;
@@ -282,13 +287,25 @@ let startGunRotationY;
     } //end of init
 
     function selectWeapon() {
-        selectedWeapon = weaponSelector.options[weaponSelector.selectedIndex].value
+        const { value } = weaponSelector.options[weaponSelector.selectedIndex];
+        if (selectedWeapon === value) return;
+
+        selectedWeapon = value;
+        localStorage.setItem('weaponSelector', selectedWeapon);
     }
     function selectBarrelMod() {
-        selectedBarrelAttachment = barrelAttachmentSelector.options[barrelAttachmentSelector.selectedIndex].value
+        const { value } = barrelAttachmentSelector.options[barrelAttachmentSelector.selectedIndex];
+        if (selectedBarrelAttachment === value) return;
+
+        selectedBarrelAttachment = value;
+        localStorage.setItem('barrelAttachment', selectedBarrelAttachment);
     }
     function selectMagazine() {
-        selectedMagazine  = magazineSelector.options[magazineSelector.selectedIndex].value
+        const { value } = magazineSelector.options[magazineSelector.selectedIndex];
+        if (selectedBarrelAttachment === value) return;
+
+        selectedMagazine = value;
+        localStorage.setItem('magazineSelector', selectedMagazine);
     }
     function changeFov() {
         camera.fov = document.getElementById("fovValue").value;
