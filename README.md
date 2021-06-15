@@ -4,6 +4,7 @@
 
 Allowing players to practise recoil and timing of weapons directly in browser, allowing players to queue for games and pracise a few rounds at the same time
 
+Try it out here: https://tobratland.github.io/
 
 ## Production History
 ### 0.2.1 - 22.04.2019
